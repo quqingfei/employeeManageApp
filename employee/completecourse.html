@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>学员评价</title>
+    <link rel="stylesheet" href="src/css/student.css">
+</head>
+<body>
+<span id="complete">
+<div class="header">
+        <div class="head">
+            <img class="headicon borderradiusnone" v-bind:src="courseImage" alt="">
+        </div>
+    <div class="sourcedetial">
+        <div class="coath" style="margin-top: 0.65rem;">
+            <span class="coachname" v-text="courseName"></span>
+        </div>
+        <div class="coath"style="margin-top: 0.65rem;">
+            <span class="startdetial font-size10">课程类型：<span class="gary6" v-text="courseType"></span></span>
+        </div>
+        <div class="coath">
+            <span class="startdetial font-size10">上课时间：<span class="gary6" v-text="date"></span></span>
+        </div>
+        <div class="coath">
+            <span class="startdetial font-size10">预约人数：<span class="gary6"><span v-text="orderCount"></span>人</span></span>
+        </div>
+    </div>
+</div>
+<div class="tiaos masesee" @click="toAllHtml">
+    <div class="tiatitle">学员与评分</div>
+    <div class="isoe"><img src="src/img/gary-right.png" alt=""></div>
+</div>
+<div class="peolpelist patb">
+    <ul>
+        <li v-for="todo in todos" v-cloak>
+            <div class="pt">
+                <div class="pthead">
+                    <img class="ptheadicon" v-bind:src="todo.imageurl" alt="">
+                    <i v-if="todo.member=='y'"><img src="src/img/vip.png" alt=""></i>
+                </div>
+                <div class="namse">
+                    <div><span v-text="todo.name"></span><span class="namesex" v-if="todo.sex=='M'"><img src="src/img/man.png" alt=""></span><span class="namesex" v-else><img src="src/img/woman.png" alt=""></span></div>
+                    <div class="gary6 font-size10">年龄：{{todo.age}}<i>&nbsp;&nbsp;剩余课程：</i>{{todo.restCount}}次</div>
+                </div>
+                <div class="headd">
+                    <div class="coath">
+                        <span class="startdetial font-size10">发起时间</span>
+                    </div>
+                    <div class="coath">
+                        <span class="startdetial font-size10" v-text="todo.creattime"></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="botbtn" style="background: #ccc; color: #666;" v-if="courseState==3"><a href="javascript:;" style="background: #ccc; color: #666;">课程已完成</a></div>
+<div class="botbtn" v-else><a href="javascript:;" @click="postcourse">完成课程</a></div>
+</span>
+<div id="nulls" style="text-align:center;font-size:1.2rem;line-height:80px;color: #666;display:none;"></div>
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/completecourse.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+</script>
+</html>

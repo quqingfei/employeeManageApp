@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="src/css/sm.css">
+    <title>沟通管理</title>
+</head>
+<style>
+    html,body{padding: 0;margin: 0;font-family: "微软雅黑",'arial';height: 100%;background-color: #fff}
+    ul,li{margin: 0;padding: 0;list-style: none;color: #333;}
+    .list{overflow: hidden;}
+    [v-cloak] {
+      display: none;
+    }
+    .formd{padding-top:1rem;width: 90%;margin: 0 auto;}
+    .formd li{overflow: hidden;line-height: 2.8rem;margin-bottom: 0.8rem;color: #666;}
+    .formd li div{float: left;}
+    .point{width: 5%;}
+    .point i{width: 0.6rem;height: 0.6rem;background: #ffbc3a;border-radius: 50%;display: block;margin: 1.1rem auto 0 auto;}
+    .mid{width: 22%; font-size: 1.4rem;}
+    .ixle{width: 100%;border: 1px solid #ccc;outline: none;box-sizing: border-box;height: 2.6rem;padding-left: 5px;border-radius: 3px;font-size: 1.4rem;}
+    .inputse{width: 73%;}
+    .formd li textarea{width: 100%;border: 1px solid #ccc;outline: none;box-sizing: border-box;padding: 5px;border-radius: 3px;font-size: 1.4rem;}
+    .submit{width: 100%;position: fixed;bottom: -1px;left: 0;height: 4rem;}
+    .submit a{line-height: 4rem;text-align: center;color: white;text-decoration: none;display: block;width: 100%;background: #3fc371;font-size: 1.6rem;}
+    .liake{background: white;height: 4rem;overflow: hidden;width: 92%;padding: 0 4%;}
+    .lisnet{overflow: hidden;width: 100%;margin-top: 0.6rem;border: 1px solid #3fc371;border-radius: 4px;}
+    .lisn{float: left;text-align: center;width: 50%;line-height: 2.8rem;color: #3fc371;font-size: 1.4rem;}
+    .item{background: #3fc371;color: white;}
+    #recordbtn{display: none;}
+    .record a{display: block;width: 9rem;line-height: 2.4rem;text-align: center;border: 1px solid #57a0cb;margin: 0 auto;color: #57a0cb;text-decoration: none;border-radius: 4px;font-size: 1.2rem;}
+    
+    .seree{position: fixed;top: 50%;margin-top: -80px;height: 160px;
+    text-align: center;width: 80%;margin-left: -40%;left: 50%; background: white;
+        z-index: 2;border-radius: 5px;box-shadow: 0px 10px 48px 0px #000;display: none;
+    }
+     .tilt{text-align: center;font-size: 18px;line-height: 42px;}
+    .title_text{line-height: 60px;}
+     .beun{text-align: center;line-height: 42px;height: 42px; font-size: 18px;position: relative;
+    bottom: -15px;
+    border-top: 1px solid #eee;}
+</style>
+<body>
+<div class="list" id="once" v-cloak>
+  <div class="liake">
+     <div class="lisnet">
+          <div val="1" class="lisn item">联系记录</div>
+          <div val="2" class="lisn">提醒记录</div>
+     </div>
+  </div>
+  <div class="formd" id="record">
+       <ul>
+           <!--<li><div class="point"><i style="opacity:0"></i></div><div class="mid">会籍顾问</div><div class="inputse"><input placeholder="请输入客户姓名" class="ixle" type="text"></div></li>-->
+           <li><div class="point"><i></i></div><div class="mid">联系时间</div><div class="inputse"><input class="ixle" type="text"  placeholder="" id='datetime-picker' /></div></li>
+           <li><div class="point"><i></i></div><div class="mid">是否有效</div><div class="inputse"><select id="statuslink" class="ixle"><option value="0">是</option><option value="1">否</option></select></div></li>
+           <li><div class="point"><i></i></div><div class="mid">来访状态</div><div class="inputse"><select id="fanglink" class="ixle"><option value="1">电话来访</option><option value="2">到店来访</option></select></div></li>
+           <li><div class="point"><i style="opacity:0"></i></div><div class="mid">联系备注</div><div class="inputse"><textarea placeholder="请输入备注" name="beizhu" id="recordlink" cols="40" rows="4"></textarea></div></li>
+       </ul>
+       <div class="record"><a href="linkdetial.html?id={{id}}">查看联系记录</a></div>
+  </div>
+  <div class="formd" id="remind" style="display:none;">
+       <ul>
+           <li><div class="point"><i style="opacity:0"></i></div><div class="mid">客户姓名</div><div class="inputse"><input id="username" placeholder="请输入客户姓名" class="ixle" type="text" disabled="true"></div></li>
+           <li><div class="point"><i></i></div><div class="mid">提醒时间</div><div class="inputse"><input class="ixle" type="text"  placeholder="" id='datetimd-picker' /></div></li>
+           <li><div class="point"><i style="opacity:0"></i></div><div class="mid">提醒备注</div><div class="inputse"><textarea placeholder="请输入备注" name="beizhu" id="recordtext" cols="40" rows="4"></textarea></div></li>
+       </ul>
+       <div class="record"><a href="linkinvite.html?id={{id}}">查看提醒记录</a></div>
+  </div>
+  
+   <div class="submit" id="linkrdbtn"><a href="javascript:;" @click="addSubmit">提交</a></div>
+   <div class="submit" id="recordbtn"><a href="javascript:;" @click="addSubmitRecord">提交</a></div>
+</div>
+<!--<div id="nullsd" style="text-align:center;font-size:1.2rem;line-height:100vh;background:#fff;color: #666;display:none;">数据加载中...</div>-->
+<div class="seree">
+     <div class="tilt">提   示</div>
+     <div class="title_text">--</div>
+     <div class="beun" onclick="cencle()">确定</div>
+</div> 
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script type='text/javascript' src='src/js/lib/sm.js' charset='utf-8'></script>
+<script src="src/js/lib/vue.min.js"></script>
+<script src="src/js/link.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+     var date = new Date();
+    var month = date.getMonth()+1;
+    var daed = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var montha = month>=10?month:'0'+month;
+    var daeda =  daed>=10?daed:'0'+daed;
+    var hours =  hour>=10?hour:'0'+hour;
+    var minutes =  minute>=10?minute:'0'+minute;
+    $("#datetime-picker").datetimePicker({
+      value: [date.getFullYear(),montha ,daeda , hours, minutes],
+      maxDate: date.getFullYear()+':'+montha+':'+daeda
+    });
+    $("#datetimd-picker").datetimePicker({
+      value: [date.getFullYear(),montha ,daed , hours, minutes],
+      maxDate: date.getFullYear()+':'+montha+':'+daed
+    });
+//    if(getCookie('duty') == 'coach'){
+//        $('.lisnet .lisn').eq(0).css('width','100%');
+//        $('.lisnet .lisn').eq(1).css('display','none');
+//    }
+    $('.lisnet .lisn').click(function(){
+        var d = $(this).attr('val');
+        $('.lisnet .lisn').removeClass('item');
+        $(this).addClass('item');
+        if(d==1){
+            $('#record').show();
+            $('#remind').hide(); 
+            $('#recordbtn').hide(); 
+            $('#linkrdbtn').show();
+        }
+        if(d==2){
+            $('#remind').show();
+            $('#record').hide();
+            $('#linkrdbtn').hide();
+            $('#recordbtn').show();
+        }
+    });
+    
+    function alerts(val){
+        $('.seree').fadeIn(200);
+        $('.title_text').text(val)
+    }
+    function cencle(val){
+        $('.seree').hide();
+    }
+    function getCookie(c_name){
+        if (document.cookie.length>0){ 
+            c_start=document.cookie.indexOf(c_name + "=")
+            if (c_start!=-1){ 
+                c_start=c_start + c_name.length+1 
+                c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+                return unescape(document.cookie.substring(c_start,c_end))
+            } 
+        }
+        return ""
+    }
+    
+    $('#username').val(getCookie('username'));
+</script>
+</html> 

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>员工通道 </title>
+    <link rel="stylesheet" href="src/css/index.css">
+    <link rel="stylesheet" href="src/css/sm.css">
+</head>
+
+<body id="mysource" onselectstart="return false">
+  <div class="nonse">
+   <span class="preloader" style="width:3rem;height:3rem;  position: fixed;  left: 50%;  top: 50%;  margin-left: -1.5rem;  margin-top: -1.5rem; z-index:100"></span>
+   <div class="bbody">
+    <div class="ygt">
+        <div class="ygt1"><a data-title="c" class="c3 item3" href="javascript:;">客户列表</a><i></i></div>
+        <div class="ygt1"><a data-title="a" class="c1" href="javascript:;">业绩统计</a><i></i></div>
+        <div class="ygt1"><a data-title="b" class="c2" href="javascript:;">我的课程</a><i></i></div>
+        <div class="ygt1"><a data-title="d" class="c4" href="javascript:;" v-text="coach">资源管理</a><i></i></div>
+    </div>
+  <input type="text" placeholder="请选择收货地址" style="display:none;" value="" id='city-picker'/>
+    <div data-attr="a" class="yjtj">
+        <div class="ygt-list">
+            <ul>
+               <li style="border-bottom:1px solid #e4e4e4"><a href="javascript:;"><div class="gyt-list-left"><span class="choosedate" id="months"><span v-text="tomonth"></span>月</span><div class="chtit fontblod">总业绩</div></div><div class="gyt-top-right fontblod"><span v-text="sumTotal"></span>元</div></a></li>
+                <li><a style="border-bottom: 1px solid #e4e4e4;" href="source.html?year={{toyear}}&month={{tomonth}}&type=1"><div class="gyt-list-left">开卡</div><div class="gyt-list-right"><span v-text="cardSumPay"></span>元</div></a></li>
+                <li><a href="source.html?year={{toyear}}&month={{tomonth}}&type=1"><div class="gyt-list-left">课程</div><div class="gyt-list-right"><span v-text="courseSumPay"></span>元</div></a></li>
+            </ul>
+        </div>
+        <div class="ygt-list">
+            <ul>
+                <li class="list-middle" style="height:auto"><a href="kecheng.html?year={{toyear}}&month={{tomonth}}"><div class="gyt-list-left">总带课</div><div class="gyt-list-right"><span v-text="courseCount">-</span>节</div></a></li>
+            </ul>
+        </div>
+        <div class="ygt-list">
+            <ul> 
+                <li style="border-bottom:1px solid #e4e4e4"><a href="javascript:;"><div class="gyt-list-left fontblod">学员评分</div></a></li>
+            </ul>
+        </div>
+        <div class="pinl">
+            <div class="pinl-left">
+                <div class="pinl-left-li">
+                <span>专业评价：</span>
+                    <span class="sexicon" v-if="noeMajor==0">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeMajor==1">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeMajor==2">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeMajor==3">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeMajor==4">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeMajor==5">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    </span>
+                    &nbsp;&nbsp;
+                    <span class="soure" v-text="avgMajor">-</span>
+                </div>
+                <div class="pinl-left-li">
+                <span>服务评价：</span>
+                    <span class="sexicon" v-if="noeService==0">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeService==1">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeService==2">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeService==3">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeService==4">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir_no.png" alt="">
+                    </span>
+                    <span class="sexicon" v-if="noeService==5">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    <img src="src/img/start-cir.png" alt="">
+                    </span>
+                    &nbsp;&nbsp;
+                    <span class="soure" v-text="avgService">-</span>
+                </div>
+            </div>
+            <div class="pinl-right" @click="goall">详情</div>
+        </div> 
+    </div>
+    
+    <div data-attr="b" class="wdkc">
+        <div class="ygt-list">
+            <ul>
+               <li><div class="gyt-list-left mar-5"><span class="lefs">&nbsp;课程列表</span></div>
+               <div class="gse-list-right-btn sercse" data-once="0"><span class="choosedate-r">{{chooseItemCor}}</span>
+                   <div class="choose-ser">
+                       <ul>
+                           <li>
+                               <a href="javascript:;" @click="viewmysource('',1)">全部</a>
+                           </li>
+                           <li>
+                               <a href="javascript:;" @click="viewmysource(2,1)">已开课</a>
+                           </li>
+                           <li>
+                               <a href="javascript:;" @click="viewmysource(3,1)">已完成</a>
+                           </li>
+                       </ul>
+                   </div>
+                   </div>
+               </li>
+               <span v-for="todo in todos" v-cloak style="overflow:hidden;">
+               <li class="seg-t" v-if="todo.date"><div class="date"><span v-text="todo.date"></span>&nbsp;&nbsp;<span v-text="todo.zhou"></span>&nbsp;&nbsp;<span class="gre" v-text="todo.today"></span></div></li>
+                <li>
+                    <span v-if="todo.type==0">
+                       <div class="seg-l">
+                            <div class="team">{{todo.courseName}}【{{todo.orderCount}}/{{todo.maxCount}}】</div>
+                            <div class="colck" v-text="todo.hour"></div>
+                        </div>                        
+                        <div class="seg-r" v-if="todo.courseState==2"><a class="btn-s" href="completecourse.html?id={{todo.id}}">完成课程</a></div>
+                        <div class="seg-r" v-else><a href="completecourse.html?id={{todo.id}}&type=0"><img src="src/img/complete.png" alt=""></a></div>
+                    </span>
+                    <span v-else>
+                    <div class="seg-l">
+                        <div class="teamre">{{todo.courseName}}【{{todo.orderCount}}/{{todo.maxCount}}】</div>
+                        <div class="colck" v-text="todo.hour"></div>
+                    </div>
+                        <div class="seg-r" v-if="todo.courseState==2"><a class="btn-s" href="person.html?id={{todo.id}}">完成课程</a></div>
+                        <div class="seg-r" v-else><a href="person.html?id={{todo.id}}&type=0">
+                        <img src="src/img/complete.png" alt=""></a></div>
+                    </span>
+                    <i class="b-line"></i>
+                </li>
+                </span>
+                <div id="nulls" @click="cilckmore" style="text-align:center;font-size:1.2rem;line-height:80px;color: #666;display:none;">无数据</div>
+            </ul>
+        </div>
+    </div>
+    
+    <div data-attr="c" class="xylb">
+        <div class="ygt-list">
+            <ul>
+               <li class="search-li serch">
+                   <div class="serche">
+                       <div class="search-btn" @click="serchBtn"></div>
+                       <input class="serchinput" id="serchinput" placeholder="输入姓名或手机号码" type="text">
+                   </div>
+                   <div class="gse-list-right-btn sercse" data-once="0"><span class="choosedate-r">{{chooseItem}}</span>
+                   <div class="choose-ser">
+                       <ul>
+                           <li>
+                               <a href="javascript:;" @click="viewemplee('',null,null,1)">全部</a>
+                           </li>
+                           <li>
+                               <a href="javascript:;" @click="viewemplee('hasCard',null,null,1)">会员</a>
+                           </li>
+                           <li>
+                               <a href="javascript:;" @click="viewemplee('hasLike',null,null,1)">非会员</a>
+                           </li>
+                            <li>
+                               <a href="javascript:;" @click="viewemplee('zombie',null,null,1)">僵尸会员</a>
+                           </li>
+                       </ul>
+                   </div>
+                   </div>
+               </li>  
+            </ul>
+        </div>
+        <div class="pinl pa-l-0" v-for="user in users">
+          <span @click="goMessageHtml(user.userId)">
+           <div class="headicon"><img v-bind:src="user.headIcon" alt=""><i v-if="user.isMember==0"><img src="src/img/vip.png" alt=""></i></div>
+            <div class="pinl-left m_5 s-t">
+                <div class="pinl-left-li"><span v-text="user.nickName">-</span>
+                <span class="sexicon" v-if="user.sex=='M'"><img src="src/img/man.png" alt=""></span>
+                <span class="sexicon" v-else><img src="src/img/woman.png" alt=""></span>
+                </div>
+                <div class="pinl-left-li bei-c">卡种:<cite v-text="user.birthYear">-</cite></div>
+            </div>
+            <div class="pinl-left m_5 s-b">
+                <div class="pinl-left-li">
+                <div class="bet bet-a beadd" v-if="user.bmi==1">增肌</div>
+                <div class="bet bet-c beadd" v-if="user.bmi==2">维持</div>
+                <div class="bet bet-d beadd" v-if="user.bmi==3">减脂</div>
+                <div class="bet bet-b beadd" v-if="user.lastSignTime">待跟进</div>
+                </div>
+                <div class="pinl-left-li bei-c">周签到次数:<cite v-text="user.signPerWeek">0</cite>次</div>
+            </div>
+            </span>
+            <div class="tels">                
+                <div class="r-c-s">
+                    <div class="r-c r-c-m1"><a href="javascript:;" @click="gochat({name:user.nickName,image:user.headIcon,id:user.userId})" style="overflow:hidden;"><img src="src/img/chat.png" alt=""></a></div>
+                </div>
+            </div>
+        </div>
+        <div id="morelist">
+            <div @click="listsert" class="diy top disa">上一页</div>
+            <div class="top" >第<span v-text="is"></span>页</div>
+<!--            <div class="top" v-else>最后一页</div>-->
+            <div @click="listcort" class="dys top disa">下一页</div>
+        </div>
+        <div class="mynulls" style="text-align: center; font-size: 1.2rem; line-height: 80px; color: rgb(102, 102, 102);">没有数据</div>
+    </div>
+    
+       <div data-attr="d" class="zygl">
+       <span class="ziyuan" style="display:none">
+            <div class="ygt-list">
+                <ul>
+                   <li class="search-li serch">
+                      <div class="addser" ><a href="add.html">+</a></div>
+                       <div class="serche-ser">
+                           <div class="search-btn" @click="linkserchBtn"></div>
+                           <input class="serchinput" id="linkserchinput" placeholder="输入姓名或手机号码" type="text">
+                       </div>
+                       <div class="gse-list-right-btn sercse" data-once="0"><span class="choosedate-r">{{chooseItemlink}}</span>
+                       <div class="choose-ser">
+                           <ul>
+                               <li>
+                                   <a href="javascript:;" @click="getResourceList(null,null,'',0,1)">全部</a>
+                               </li>
+                               <li>
+                                   <a href="javascript:;" @click="getResourceList(null,null,1,1,1)">新录入</a>
+                               </li>
+                               <li>
+                                   <a href="javascript:;" @click="getResourceList(null,null,2,2,1)">已注册</a>
+                               </li>
+                                <li>
+                                   <a href="javascript:;" @click="getResourceList(null,null,3,3,1)">已购卡</a>
+                               </li>
+                                <li>
+                                   <a href="javascript:;" @click="getResourceList(null,null,4,4,1)">卡过期</a>
+                               </li>
+                           </ul>
+                       </div>
+                       </div>
+                   </li>  
+                </ul>
+            </div>
+            <div class="pinl pa-l-0 bgleft" v-for="list in lists" @click="goDetial(list.id,'sell')">
+                <div class="zylist"><div class="zyna doublack">{{list.name}}</div><div class="zytype">
+                <span v-if="list.level==1" class="zkdmo1">一级</span>
+                <span v-if="list.level==2" class="zkdmo2">二级</span>
+                <span v-if="list.level==3" class="zkdmo3">三级</span>
+                <span v-if="list.level==4" class="zkdmo4">四级</span>
+                </div><div class="zyphone">联系电话：<span>{{list.phone}}</span></div></div>
+                <div class="zylist"><div class="zyna">性别：<span v-if="list.sex=='M'">男</span><span v-if="list.sex=='F'">女</span></div><div class="zytype">-</div><div  class="zyphone">分配时间：<span>{{list.gmtSetSale | time}}</span></div></div>
+            </div>
+            <div id="mynulled" style="text-align: center; font-size: 1.2rem; line-height: 80px; color: rgb(102, 102, 102);">没有更多数据了</div>
+        </span>
+        <span class="fuwu"  style="display:none">
+
+        <div class="ygt-list">
+            <ul>
+               <li class="search-li serch">
+                   <div class="serche">
+                       <div class="search-btn" @click="serchBtn"></div>
+                       <input class="serchinput" id="serchinput" placeholder="输入姓名或手机号码" type="text">
+                   </div>
+                   <div class="gse-list-right-btn sercse" data-once="0"><span class="choosedate-r">{{chooseItem}}</span>
+                   <div class="choose-ser">
+                       <ul>
+                           <li>
+                               <a href="javascript:;" @click="viewemplee('',null,null,1)">全部</a>
+                           </li>
+                           <li>
+                               <a href="javascript:;" @click="viewemplee('hasCard',null,null,1)">会员</a>
+                           </li>
+                           <li>
+                               <a href="javascript:;" @click="viewemplee('hasLike',null,null,1)">非会员</a>
+                           </li>
+                            <li>
+                               <a href="javascript:;" @click="viewemplee('zombie',null,null,1)">僵尸会员</a>
+                           </li>
+                       </ul>
+                   </div>
+                   </div>
+               </li>  
+            </ul>
+        </div>
+        <div class="bgleft pinl pa-l-0" v-for="user in users">
+          <span @click="goDetial(user.userId,'coach')">
+           <div class="headicon"><img v-bind:src="user.headIcon" alt=""><i v-if="user.isMember==0"><img src="src/img/vip.png" alt=""></i></div>
+            <div class="pinl-left m_5 s-t">
+                <div class="pinl-left-li"><span v-text="user.nickName">-</span>
+                <span class="sexicon" v-if="user.sex=='M'"><img src="src/img/man.png" alt=""></span>
+                <span class="sexicon" v-else><img src="src/img/woman.png" alt=""></span>
+                </div>
+                <div class="pinl-left-li bei-c">卡种:<cite v-text="user.birthYear">-</cite></div>
+            </div>
+            <div class="pinl-left m_5 s-b">
+                <div class="pinl-left-li">
+                <div class="bet bet-a beadd" v-if="user.bmi==1">增肌</div>
+                <div class="bet bet-c beadd" v-if="user.bmi==2">维持</div>
+                <div class="bet bet-d beadd" v-if="user.bmi==3">减脂</div>
+                <div class="bet bet-b beadd" v-if="user.lastSignTime">待跟进</div>
+                </div>
+                <div class="pinl-left-li bei-c">周签到次数:<cite v-text="user.signPerWeek">0</cite>次</div>
+            </div>
+            </span>
+        </div>
+        <div id="morelist">
+            <div @click="listsert" class="diy top disa">上一页</div>
+            <div class="top" >第<span v-text="is"></span>页</div>
+<!--            <div class="top" v-else>最后一页</div>-->
+            <div @click="listcort" class="dys top disa">下一页</div>
+        </div>
+        <div class="mynulls" style="text-align: center; font-size: 1.2rem; line-height: 80px; color: rgb(102, 102, 102);">没有数据</div>
+  
+        </span>
+    </div>
+    
+    </div>
+    </div>
+    <div class="close">
+        <div class="back" @click="goback"><img src="src/img/back.png"></div>
+        <div class="clos" @click="closeIframe"><img src="src/img/close.png"></div>
+    </div>
+    <div id="message">        
+        <iframe id="" src="" height="100%" width="100%"></iframe>
+    </div>
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+    $('.bbody').fadeIn(200);
+</script>
+<script type='text/javascript' src='src/js/lib/sm.js' charset='utf-8'></script>
+<script type="text/javascript" src="src/js/lib/sm-city-picker.min.js" charset="utf-8"></script>
+<!--<script src="src/js/testlogin.js"></script>-->
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/mysource.js"></script>
+<script>
+    Vue.filter('time', function (value) {
+        if(typeof(value)=="undefined"||value == ""){
+            return "无";
+        }else{
+            var date = new Date(value);
+            var year = date.getFullYear();
+            var month = date.getMonth()+1;
+            var daed = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var months = month>=10?month:'0'+month;
+            var daeda =  daed>=10?daed:'0'+daed;
+            var hours =  hour>=10?hour:'0'+hour;
+            var minutes =  minute>=10?minute:'0'+minute;
+            return year+'/'+months+'/'+daeda+" "+hours+':'+minutes;
+        }
+    })
+    
+    function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+    if (r != null)
+        return unescape(r[2]);
+        return null; // 返回参数值
+    }
+    
+    var tyear = new Date().getFullYear();
+    var tmonth = new Date().getMonth()+1>10?new Date().getMonth()+1:'0'+(new Date().getMonth()+1)
+    $('#city-picker').val(tyear+" "+tmonth);
+    
+    $('#months').click(function(){
+        $('#city-picker').trigger('click');
+    });
+    
+    $(".ygt a").click(function(){
+        $('.ygt1 a').removeClass('item1').removeClass('item2').removeClass('item3').removeClass('item4');
+        switch($(this).attr('data-title')){
+            case "a": $(this).addClass('item1'); $('.wdkc,.xylb,.zygl').hide();$('.yjtj').fadeIn(200); break;
+            case "b": $(this).addClass('item2'); $('.yjtj,.xylb,.zygl').hide();$('.wdkc').fadeIn(200); break;
+            case "c": $(this).addClass('item3'); $('.yjtj,.wdkc,.zygl').hide();$('.xylb').fadeIn(200); break;
+            case "d": $(this).addClass('item4'); $('.yjtj,.wdkc,.xylb').hide();$('.zygl').fadeIn(200); break;
+        }
+    });
+    
+    $('.sercse').click(function(){
+        var ns = $(this).attr('data-once');
+        if(ns==0){            
+            $(this).find('.choose-ser').show();
+            $(this).attr('data-once',1);
+        }else{
+            $(this).find('.choose-ser').hide();
+            $(this).attr('data-once',0);
+        }
+    });
+    
+</script>
+</html>

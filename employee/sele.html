@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>课程内容</title>
+    <link rel="stylesheet" href="src/css/student.css">
+</head>
+
+<body id="once">
+<div class="tbtn">
+    <div class="tbtne">
+        <div class="ieoes" data-vl="1">会员卡</div>
+        <div data-vl="2">课程</div>
+    </div>
+</div>
+<div id="a">
+<div v-for="todo in todos">
+    <div v-if="todo.cardType==0" class="selakibe">
+        <div class="tiaos masesee">
+            <div class="tiatitle" v-text="todo.cardName">-</div>
+        </div>
+        <div class="peolpelist selaoption">
+            <ul>
+                <li>
+                    <div class="sler">
+                        <div class="slerl">有效期</div>
+                        <div class="slerr" v-text="todo.time">-</div>
+                    </div>
+                </li>                
+                <li>
+                    <div class="sler">
+                        <div class="slerl">签到次数</div>
+                        <div class="slerr" v-text="todo.useTime">-</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sler">
+                        <div class="slerl">最近到店时间</div>
+                        <div class="slerr" v-text="todo.gmtModify">-</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div v-else class="selakibe">
+        <div class="tiaos masesee">
+            <div class="tiatitle" v-text="todo.cardName">-</div>
+        </div>
+        <div class="peolpelist selaoption">
+            <ul>
+                <li>
+                    <div class="sler">
+                        <div class="slerl">有效期</div>
+                        <div class="slerr" v-text="todo.time">-</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sler">
+                        <div class="slerl">课程总次数</div>
+                        <div class="slerr"><span v-text="todo.totleTime">0</span>节</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sler">
+                        <div class="slerl">已使用次数</div>
+                        <div class="slerr"><span v-text="todo.useTime">0</span>节</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sler">
+                        <div class="slerl">最近到店时间</div>
+                        <div class="slerr" v-text="todo.gmtModify">-</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="nullsd" style="text-align:center;font-size:1.2rem;line-height:80px;color: #666;display:none;">数据加载中...</div>
+</div>
+<div id="b">
+<div v-for="course in courses" class="selakibe">
+<div class="tiaos masesee">
+    <div class="tiatitle" v-text="course.courseName">--</div>
+</div>
+<div class="peolpelist selaoption">
+    <ul>
+        <li>
+            <div class="sler">
+                <div class="slerl">课程类型</div>
+                <div class="slerr" v-text="course.courseType">-</div>
+            </div>
+        </li>
+        <li>
+            <div class="sler">
+                <div class="slerl">有效期</div>
+                <div class="slerr" v-text="course.time">-</div>
+            </div>
+        </li>
+        <li>
+            <div class="sler">
+                <div class="slerl">课程总次数</div>
+                <div class="slerr"><span v-text="course.courseTotalCount"></span>节</div>
+            </div>
+        </li>
+        <li>
+            <div class="sler">
+                <div class="slerl">剩余课程</div>
+                <div class="slerr"><span v-text="course.courseUseCount"></span>节</div>
+            </div>
+        </li>
+    </ul>
+</div>
+</div>
+<div id="nullwqe" style="text-align:center;font-size:1.2rem;line-height:80px;color: #666;display:none;">数据加载中...</div>
+</div>
+
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/sele.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+    $('.tbtne div').click(function(){
+        if($(this).attr('data-vl')==1){
+            $('#b').hide();
+            $('#a').fadeIn(200);
+        }else{
+            $('#a').hide();
+            $('#b').fadeIn(200);
+        }
+        $('.tbtne div').removeClass('ieoes');
+        $(this).addClass('ieoes');
+    })
+</script>
+</html>

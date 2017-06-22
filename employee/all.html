@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>    
+    <title>客户评价</title>
+    <link rel="stylesheet" href="src/css/student.css">
+</head>
+<body id="complete" onselectstart="return false">
+<div class="tiaos"><span v-text="total">0</span>条评价</div>
+<div class="peolpelist">
+    <ul>
+        <li v-for="todo in todos">
+            <div class="pt">
+                <div class="pthead">
+                    <img class="ptheadicon" v-bind:src="todo.userIcon" alt="">
+                    <i v-if="todo.member=='y'"><img src="src/img/vip.png" alt=""></i>
+                </div>
+                <div class="namse">
+                    <div>
+                    <span v-if="todo.anonymous=='y'">匿名</span>
+                    <span v-else v-text="todo.userName">--</span>
+                    <span class="namesex" v-if="todo.userSex=='M'"><img src="src/img/man.png" alt=""></span>
+                    <span class="namesex" v-else><img src="src/img/woman.png" alt=""></span>
+                    </div>
+                    <div v-text="todo.commentTime">---.--.--</div>
+                </div>
+                <div class="headd">
+                    <div class="coath">
+                        <span class="startdetial">专业评价：</span>
+                        <i v-if="todo.majorEvaluate==0">
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.majorEvaluate==1">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.majorEvaluate==1">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.majorEvaluate==2">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.majorEvaluate==3">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.majorEvaluate==4">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.majorEvaluate==5">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        </i>
+                        <span class="start ml5" v-text="todo.evaluate">-</span>
+                    </div>
+                    <div class="coath">
+                        <span class="startdetial">服务评价：</span>
+                        <i v-if="todo.serviceEvaluate==0">
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.serviceEvaluate==1">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.serviceEvaluate==1">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.serviceEvaluate==2">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.serviceEvaluate==3">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.serviceEvaluate==4">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir_no.png" alt=""></span>
+                        </i>
+                        <i v-if="todo.serviceEvaluate==5">
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        <span class="start"><img src="src/img/start-cir.png" alt=""></span>
+                        </i>
+                        <span class="start ml5" v-text="todo.serevaer">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="message" v-text="todo.userComment"></div>
+            <div class="showimg" >
+                <img v-for="image in todo.images" @click="bigImg(url+todo.images[$index])" v-bind:src="url+todo.images[$index]" alt="">
+            </div>
+        </li>
+    </ul>
+</div>
+<div id="bigimg" @click="colseImg" class="bigimg">
+    <img style="width:100%" src="src/img/hser.png" alt="">
+</div>
+<style>
+    .bigimg{position: fixed;height: 100%;width: 100%;background: #000;top: 0;left: 0;display: none;}
+</style>
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/all.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+</script>
+</html>

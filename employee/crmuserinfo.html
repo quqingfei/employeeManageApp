@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>客户详情</title>
+    <link rel="stylesheet" href="src/css/student.css">
+</head>
+<style>
+html,body{font-family: "微软雅黑";padding: 0;margin: 0;background: white;color: #333;position: relative;overflow: hidden;}
+.text{
+	margin:1.2rem 5%;position: relative;}
+	.miaoshu{width:96%; height:80px;
+	border-radius:3px;
+        outline:none; padding: 2%;margin: 0;font-family: "微软雅黑";border:1px solid #ccc;box-shadow: none;font-size: 1.2rem;}
+    .botbtn{position: fixed;bottom: 0;height: 45px;background: #3fc371;width: 100%;}
+.botbtn a{width: 100%;height: 100%;line-height: 45px; font-size: 16px;color: white; text-align: center;display: block;text-decoration: none;}
+    .sere{position: absolute;bottom: 6px;right: 6px;color: #ccc;}
+    .posleft{position: absolute;top: 0;left: 100%;z-index: 100;height: 100%;width: 100%;background: #fff;transition: 0.2s all;}
+    .grnes{  color: #46AB75;}
+    .zhezhao{height: 100%;width: 100%;position: fixed; display:table;text-align:center;background: black;z-index: 1;right: 100%;}
+    .zhezhao img{vertical-align:middle;width: 100%;}
+</style>
+<body id="once">
+<div class="zhezhao" @click="small">
+<img v-bind:src="headIcon"  alt=""></div>
+<div class="header poser">
+        <div class="head dui">
+            <img class="headicon" v-bind:src="headIcon" @click="bigimg" alt="">
+            <i><img src="src/img/vip.png" alt=""></i>
+        </div>
+    <div class="sourcedetial" style="width:70%">
+        <div class="coath sefd mt">
+            <span class="coachname coathlefst" v-text="nickName"></span>
+            <span class="coathlefst" v-if="sex=='女'"><img src="src/img/woman.png" alt=""></span>
+            <span class="coathlefst" v-else><img src="src/img/man.png" alt=""></span>
+           <!-- <span class="coathlefst">LV.2</span>-->
+        </div>
+        <div class="sefd wdtdd">
+           <div class="slerl woo1">               
+                <div class="bsecc"><span v-text="birthYear"></span>岁</div>
+                <div class="seef">年龄</div>
+           </div>
+            <div class="slerl woo2">               
+                <div class="bsecc"><span v-text="weight"></span>kg</div>
+                <div class="seef">体重</div>
+           </div>
+            <div class="slerl woo3">               
+                <div class="bsecc" v-text="bmi"></div>
+                <div class="seef">BMI</div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<div class="peolpelist patb">
+    <ul>
+       <li>
+            <div class="sler">
+                <div class="slerl">姓名</div>
+                <div class="slerr" v-text="memberName">***</div>
+            </div>
+        </li>
+        <li>
+            <div class="sler">
+                <div class="slerl">身高</div>
+                <div class="slerr" v-text="height">***</div>
+            </div>
+        </li>
+        <li>
+            <div class="sler">
+                <div class="slerl">健身类型</div>
+                <div class="slerr" v-text="body">减脂</div>
+            </div>
+        </li>
+        <li>
+            <div class="sler">
+                <div class="slerl">手机号码</div>
+                <div class="slerr phoneicon"><a href="javascript:;" v-text="phone" style="color: #a1a1a1;"></a></div>
+            </div>
+        </li>
+        <li v-if="examId!=''">
+           <a href="{{examId}}">
+            <div class="sler">
+                <div class="slerl">体测报告</div>
+                <div class="isoe me"><img src="src/img/gary-right.png" alt=""></div>
+            </div>
+            </a>
+        </li>
+        <li v-if="cards!=''" v-for="card in cards">       
+            <div class="sler">               
+                <div class="slerl" v-text="card.name">***</div>
+                <span v-if="card.type==0">
+                    <div class="slerr" v-if="card.unit=='y'"><span v-text="card.count">*</span>年</div>
+                    <div class="slerr" v-if="card.unit=='M'"><span v-text="card.count">*</span>月</div>
+                    <div class="slerr" v-if="card.unit=='d'"><span v-text="card.count">*</span>天</div>
+                </span>
+                <span v-else>
+                    <div class="slerr"><span v-text="card.count">*</span>次卡</div>
+                </span>
+            </div>
+        </li>
+        <li v-if="userCourses!=''" v-for="userCourse in userCourses">
+            <div class="sler">               
+                <div class="slerl">{{userCourse.course_name}}（{{userCourse.coach_name}}）</div>
+                <span v-else>
+                    <div class="slerr"><span v-text="new Date(userCourse.gmt_create).getFullYear()+'-'+(new Date(userCourse.gmt_create).getMonth()+1)+'-'+new Date(userCourse.gmt_create).getDate()">*</span>(购买)</div>
+                </span>
+            </div> 
+        </li>
+    </ul>
+</div>
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/crmuserinfo.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+</script>
+</html>

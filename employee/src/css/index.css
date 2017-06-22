@@ -1,0 +1,326 @@
+ html,body{font-family: "微软雅黑";padding: 0;margin: 0;background: white;-webkit-user-select: none;/*禁用手机浏览器的用户选择功能 */  
+-moz-user-select: none;  }
+    ul,li{list-style: none;margin: 0;padding: 0;}
+    .ygt{display: block; overflow: hidden; width: 100%;height: 5.6rem;border-bottom: 1px solid #e4e4e4;}
+    .ygt1{
+        float: left;width: 25%;
+        text-align: center;
+        font-size: 1.2rem;
+        height: 100%;
+        position: relative;
+    }
+    [v-cloak] {
+      display: none;
+    }
+.fontblod{font-weight: 600;}
+cite{font-style: normal;  font-size: 1rem;}
+    .ygt a{display: block;flex: 1;height: 100%;line-height: 8rem;box-sizing: border-box;}
+    .c1{background: url(../img/y-yjtj_no.png) no-repeat center;background-size: 2.4rem;background-position: center 0.8rem;}
+    .ygt i{display: block;position: absolute;width: 1px;height: 2.8rem;background: #e4e4e4;top: 1.3rem;right: 0;}
+    .c2{background: url(../img/y-mycourse_no.png) no-repeat center;background-size: 2.4rem;background-position: center 0.8rem;}
+    .c3{background: url(../img/y-xypj_no.png) no-repeat center;background-size: 2.4rem;background-position: center 0.8rem;}
+    .c4{background: url(../img/n-mamamge.png) no-repeat center;background-size: 2.4rem;background-position: center 0.8rem;}
+    .ygt1 .item1{color: #3fc371;background: url(../img/y-yjtj.png) no-repeat center;background-size: 2.4rem;background-position: center 0.8rem;}
+    .ygt1 .item2{color: #3fc371;background: url(../img/y-mycourse.png) no-repeat center;background-size: 2.4rem;background-position: center 0.8rem;}
+    .ygt1 .item3{color: #3fc371;background: url(../img/y-xypj.png) no-repeat center;background-size: 2.4rem;background-position: center 0.8rem;}
+    .ygt1 .item4{color: #3fc371;background: url(../img/mamamge.png) no-repeat center;background-size: 2.4rem;background-position: center 0.8rem;}
+    a{text-decoration: none;color: #666;}
+    .ygt-list li{width: 100%;position: relative;height: 56px;}
+    .ygt-list .serch{height: 56px;}
+    .ygt-list a{line-height: 56px;font-size: 1.4rem;display: block;margin:0 4%; overflow: hidden;}
+    .gyt-list-left{float: left;color: #666;}
+    .gse-list-right-btn{float: right;color: #666;background:#3fc371;height: 32px;line-height: 32px;margin-top: 12px;border-radius: 3px;}
+    .gyt-list-right{float: right;background: url(../img/gary-right.png) no-repeat right center;background-size: 8px;padding-right: 7%;color: #a8a8a8;}
+    .list-middle{border-top: 10px solid #efefef;border-bottom: 10px solid #efefef;}
+    .list-middle a{border: none;}
+    .choosedate{float: left;display: block;background: url(../img/white-down.png) no-repeat,#3fc371;background-size: 14px; background-position: 53px 13px; color: white;height: 32px;line-height: 32px;padding-left: 14px; margin-top: 12px;border-radius: 3px;width: 76px;}
+.choosedate-r{float: left;display: block;background: url(../img/white-down.png) no-repeat;background-size: 13px; background-position: right 13px; color: white;height: 32px;line-height: 32px;padding-left: 14px; border-radius: 3px;padding-right: 20px;margin-right: 14px;position: relative;font-size: 1.2rem;}
+    .gyt-top-right{float:right;color:#3fc371;font-weight: bold;}
+    .chtit{float: left;margin-left: 10px;}
+    .pinl{border-bottom: 1px solid #e4e4e4;overflow: hidden;font-size: 1.4rem;color: #666;margin: 0 4%;padding: 10px 4px;}
+    .sexicon{margin-top: 4px}
+    .sexicon img{width: 1.4rem;width: 1.4rem;margin: 0 2px; display: block;float: left;}
+    .pinl-left{float: left;}
+    .pinl-left span {float: left;}
+    .pinl-right{float: right; padding-right: 7%;background: url(../img/gary-right.png) no-repeat right center;background-size: 8px;color: #a8a8a8;line-height: 48px;}
+    .soure{margin-left: 5px;}
+    .pinl-left-li{height: 26px;line-height: 26px;}
+.mar-5{margin-left: 5%;}
+.wdkc,.yjtj,.zygl{display: none;}
+.lefs{border-left: 3px solid #3fc371;  font-size: 1.4rem;  line-height: 56px;  height: 56px;}
+.ygt-list .seg-t{background: #eee;height: 28px;border-top: 1px solid #e0e0e0;border-bottom: 1px solid #e0e0e0;}
+.date{margin-left: 5%;line-height: 28px;color: #333333;font-size: 1.2rem;}
+.gre{color: #3fc371;}
+.seg-l{float: left;margin-left: 5%;margin-top: 8px;color: #333;}
+.seg-l div{height: 20px;line-height: 20px;font-size: 1.2rem;}
+.team{background: url(../img/team.png) no-repeat left center;background-size: 1.4rem;padding-left: 20px;}
+.teamre{background: url(../img/poson.png) no-repeat left center;background-size: 1.4rem;padding-left: 20px;}
+.colck{background: url(../img/table.png) no-repeat left center;background-size: 1.4rem;padding-left: 20px;}
+.seg-r{float: right;margin-right: 5%;}
+.ygt-list .btn-s{border: 1px solid #3fc371;width:66px;height: 24px;line-height: 25px;text-align: center;color:#37c371;font-size: 12px;margin-top: 17px;border-radius: 3px;}
+.seg-r img{display: block;width: 63px;margin-top: 11px;}
+.b-line{position: absolute;bottom: 0;left: 0;display: block; height: 1px; box-shadow: 0px 1px 0px 0px #eee;width: 90%;margin-left: 5%;}
+.serche{overflow: hidden;float: left;width: 60%;margin-left: 5%;padding-top: 12px;}
+.serche-ser{overflow: hidden;float: left;width: 50%;margin-left: 5%;padding-top: 12px;}
+.addser{float: left;text-align: center;color: white;line-height: 28px;height: 32px;background: #ffbc3a;margin-left: 5%;margin-top: 12px;width: 10%;border-radius: 3px;font-size: 2.4rem;}
+.addser a{text-align: center;color: white;line-height: 28px;height: 32px;width: 100%;height: 100%; font-size: 2.4rem;display: block;margin: 0;padding: 0;}
+.search-btn{width: 20%;height:32px;float: left;background: url(../img/search.png) no-repeat,#37c371;background-size: 20px;background-position: center center;border-top-left-radius: 3px;border-bottom-left-radius: 3px;}
+.serchinput{float: left;height: 32px;border: none;outline: none;text-align: center;padding: 0;width: 80%;border-top-right-radius: 3px;border-bottom-right-radius: 3px;}
+.search-li{background: #efefef;}
+.sercse{margin-right: 5%;position: relative;}
+.choose-ser{position: absolute;left: 0;top: 32px;background: #fff;box-shadow: 0px 2px 3px #999999;  z-index: 1;display: none;}
+.choose-ser li{width: 75px;height: 28px;}
+.choose-ser li a{text-align: center;height: 28px;line-height: 28px;font-size: 12px;}
+.headicon{float: left;position: relative;}
+.headicon i{position: absolute;width: 14px;right: 2px;top: 0;}
+.headicon i img{display: block;width: 100%;border: none;}
+.headicon>img{float: left;display: block;width: 48px;height: 48px; border: 1px solid #c7c3c1;border-radius: 50%;}
+.bet{float: left;padding: 0 4px;font-size: 1.2rem;border: 1px solid #3fc371; border-radius: 3px;box-sizing: border-box; }
+.bet-a{background: #70b8e8;color: white;margin-right: 5px;border: 1px solid #70b8e8; }
+.bet-c{background: #3fc371;color: white;margin-right: 5px;border: 1px solid #3fc371;}
+.bet-d{background: #ffbc3a;color: white;margin-right: 5px;border: 1px solid #ffbc3a;}
+.bet-b{color: #3fc371;}
+.m_5{margin-left: 4%;}
+.bei-c{font-size: 1.2rem;color: #a5a5a5;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.beadd{height: 22px;margin-top: 2px;line-height: 20px;}
+.r-c-s{width: 32px;  float: right;  margin-right: 10px;}
+.tels{width: 16%;float: left;overflow: hidden;}
+.r-c-m1{margin-top: 12px}
+.r-c-m2{margin-top: 7px}
+.r-c{overflow: hidden;width: 34px;}
+.r-c img{display: block;float: left;width:100%;height: 100%;}
+.pa-l-0{padding-left: 0;padding-right: 0;}
+.s-t{width: 28%;}
+.s-b{width: 31%;}
+.bbody{display: none;}
+.top{text-align: center;float: left;line-height: 40px;width: 33.33%;box-shadow: 1px 1px 0px 0px #F5F5F5;}
+.disa{color: #ccc;}
+#morelist{overflow: hidden;width: 100%;box-shadow: 1px 1px 0px 0px #E4E4E4;}
+.close{position: fixed;left:4%;top:20px;font-size: 20px;color: #fff;z-index: 1;width: 92%;height: 30px;text-align: center;line-height: 40px;background: #ccc;display: none;}
+.close .clos{float: right;  width: 30px;  height: 30px;}
+.close .back{float: left;  width: 30px;  height: 30px;}
+.close .back img,.close .clos img{  display: block;  width: 14px; margin-left: 5px; margin-top: 8px;text-align: center;float: left;}
+#message {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    position: fixed;display: none;left: 0;top: 50px;border:0;
+    width: 92%;
+    margin-left: 4%;
+    /* 提示: 请在此处加上需要设置的大小(dimensions)或位置(positioning)信息! */
+}
+#message iframe {
+    /* 你自己指定的样式 */
+    height: 100%;
+    width: 100%;
+    border:0;
+}
+.zylist{
+    overflow: hidden;
+    width: 100%;
+    line-height: 26px;
+    font-size: 1.2rem;
+    color: #666;
+}
+.zylist div{
+    float: left;
+}
+.zyna{
+    width: 20%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.doublack{
+    color: #333;
+    font-weight: 600;
+}
+.zytype{
+    width: 16%;
+    color: white;
+}
+.zkdmo1{
+    display: inline-block;
+    width: 40px;
+    background: #ff483a;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 3px;
+}
+.zkdmo2{
+    display: inline-block;
+    width: 40px;
+    background: #ffbc3a;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 3px;
+}
+.zkdmo3{
+    display: inline-block;
+    width: 40px;
+    background: #3fc371;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 3px;
+}
+.zkdmo4{
+    display: inline-block;
+    width: 40px;
+    background: #6fb8e9;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 3px;
+}
+.zyphone{
+    width: 64%;
+}
+.bgleft{
+    background: url(../img/gary-right.png) no-repeat right center;
+    background-size: 0.8rem;
+}
+#mynulled{
+    display: none;
+}
+
+
+/*
+	HTML5 Reset :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	Eric Meyer					:: http://meyerweb.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+-------------------------------------------------------------------------------*/
+
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-weight: normal;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+main, article, aside, figure, footer, header, nav, section, details, summary {display: block;}
+
+/* Handle box-sizing while better addressing child elements:
+   http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
+
+/* Responsive images and other embedded objects */
+/* if you don't have full control over `img` tags (if you have to overcome attributes), consider adding height: auto */
+img,
+object,
+embed {max-width: 100%;}
+
+/*
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
+	In fact, it *will* cause problems with Google Maps' controls at small size.
+	If this is the case for you, try uncommenting the following:
+#map img {
+		max-width: none;
+}
+*/
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+/* we use a lot of ULs that aren't bulleted.
+	you'll have to restore the bullets within content,
+	which is fine because they're probably customized anyway */
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: separate; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom;}
+.ie7 input[type="checkbox"] {vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+
+small {font-size: 85%;}
+
+strong {font-weight: bold;}
+
+td, td img {vertical-align: top;}
+
+/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+button,
+input[type=button] {width: auto; overflow: visible;}
+
+/* scale images in IE7 more attractively */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover
+   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+*/
+
+/* let's clear some floats */
+.clearfix:after { content: " "; display: block; clear: both; }

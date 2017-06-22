@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>课程列表</title>
+</head>
+<style>
+    html,body{padding: 0;margin: 0;font-family: "微软雅黑",'arial';height: 100%;background-color: #fff}
+    ul,li{margin: 0;padding: 0;list-style: none;color: #333;}
+    .list{overflow: hidden;}
+    .list li{height: 46px;line-height: 46px;font-size: 1.2rem;padding: 0 5%;background-color: #fff;}
+    .list li:nth-child(odd){background:#eee;}
+    .a1{width: 10%;float: left;}
+    .a2{width: 35%;float: left;}
+    .a3{width: 55%;text-align: right;float: right;}
+    .point{width: 8px; height: 8px; background: #3fc371;display: block;border-radius: 50%;margin: 0 auto;margin-top: 20px;}
+    [v-cloak] {
+      display: none;
+    }
+</style>
+<body>
+<div class="list" id="once" v-cloak>
+    <ul>
+        <li v-for="todo in todos">
+            <div class="a1"><i class="point"></i></div>
+            <div class="a2">{{todo.courseName}}{{todo.courseMore}}节</div>
+            <div class="a3">{{todo.date}} {{todo.time}}</div>
+        </li>
+    </ul>
+</div>
+<div id="nullsd" style="text-align:center;font-size:1.2rem;line-height:100vh;background:#fff;color: #666;display:none;">数据加载中...</div>
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/list.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+</script>
+</html> 

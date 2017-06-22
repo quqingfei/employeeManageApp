@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>客户详情</title>
+    <link rel="stylesheet" href="src/css/student.css">
+</head>
+<style>
+html,body{font-family: "微软雅黑";padding: 0;margin: 0;background: white;color: #333;position: relative;overflow: hidden;  height: 100%;}
+.text{
+	margin:1.2rem 5%;position: relative;}
+	.miaoshu{width:96%; height:80px;
+	border-radius:3px;
+        outline:none; padding: 2%;margin: 0;font-family: "微软雅黑";border:1px solid #ccc;box-shadow: none;font-size: 1.2rem;}
+    .botbtn{position: absolute;bottom: 0;left: 0;height: 45px;background: #3fc371;width: 100%;  z-index: 9999;}
+.botbtn a{width: 100%;height: 100%;line-height: 45px; font-size: 16px;color: white; text-align: center;display: block;text-decoration: none;}
+    .sere{position: absolute;bottom: 6px;right: 6px;color: #ccc;}
+    .posleft{position: absolute;top: 0;left: 100%;z-index: 1;height: 100%;width: 100%;background: #fff;transition: 0.2s all;}
+    .box {    
+     display: none;
+     vertical-align:middle;     
+     text-align:center;     
+     width:100vw;
+     height:100vh;
+     background-color: #000;
+    }
+    .box img {     
+      vertical-align:middle;
+      max-width: 100vw;
+    }
+</style>
+<body id="once">
+
+<div class="box" @click="hideHeadImg"> <img v-bind:src="headIcon" /> </div>
+
+<div class="header poser">
+        <div class="head dui">
+            <img class="headicon" @click="showHeadImg" v-bind:src="headIcon" alt="">
+            <i><img src="src/img/vip.png" alt=""></i>
+        </div>
+    <div class="sourcedetial" style="width:70%">
+        <div class="coath sefd mt">
+            <span class="coachname coathlefst" v-text="nickName"></span>
+            <span class="coathlefst" v-if="sex=='F'"><img src="src/img/woman.png" alt=""></span>
+            <span class="coathlefst" v-else><img src="src/img/man.png" alt=""></span>
+           <!-- <span class="coathlefst">LV.2</span>-->
+        </div>
+        <div class="sefd wdtdd">
+           <div class="slerl woo1">               
+                <div class="bsecc"><span v-text="birthYear"></span>岁</div>
+                <div class="seef">年龄</div>
+           </div>
+            <div class="slerl woo2">               
+                <div class="bsecc"><span v-text="weight"></span>kg</div>
+                <div class="seef">体重</div>
+           </div>
+            <div class="slerl woo3">               
+                <div class="bsecc" v-text="bmi"></div>
+                <div class="seef">BMI</div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<div class="peolpelist patb">
+    <ul>
+        <li>
+            <div class="sler">
+                <div class="slerl">真实姓名</div>
+                <div class="slerr" v-text="realName">***</div>
+            </div>
+        </li>
+        <li>
+            <div class="sler">
+                <div class="slerl">健身类型</div>
+                <div class="slerr" v-text="body">减脂</div>
+            </div>
+        </li>
+        <li>
+            <div class="sler">
+                <div class="slerl">手机号码</div>
+                <div class="slerr phoneicon" @click="call(phone)"><a href="javascript:;" v-text="phone" style="color: #a1a1a1;"></a></div>
+            </div>
+        </li>
+        <li v-if="bodyExamId!=''">
+           <a href="{{bodyExamId}}">
+            <div class="sler">
+                <div class="slerl">体测报告</div>
+                <div class="isoe me"><img src="src/img/gary-right.png" alt=""></div>
+            </div>
+            </a>
+        </li>
+        <li>
+           <a href="sele.html?id={{userId}}">
+            <div class="sler">
+                <div class="slerl">消费详情</div>
+                <div class="isoe me"><img src="src/img/gary-right.png" alt=""></div>
+            </div>
+            </a>
+        </li>
+        <li>
+           <a href="list.html?id={{userId}}">
+            <div class="sler">
+                <div class="slerl">课程记录</div>
+                <div class="isoe me"><img src="src/img/gary-right.png" alt=""></div>
+            </div>
+            </a>
+        </li>
+        <li>
+<!--           <a href="mark.html?mark={{encodeURIComponent(mark)}}&id={{userId}}">-->
+           <a href="javascript:;" @click="animatleftmake">
+            <div class="sler">
+                <div class="slerl">备注</div>
+                <div class="isoe me"><img src="src/img/gary-right.png" alt=""></div>
+                <div class="slerl" style="float:right;color:#ccc;margin-right:5px;" v-text="mark">--</div>
+            </div>
+            </a>
+        </li>
+    </ul>
+</div>
+ <div class="posleft">    
+    <div class="text">
+        <textarea class="miaoshu" placeholder="请填写备注信息" v-text="mark"></textarea>
+<!--        <div class="sere"><span class="ies">0</span>/18字符</div>-->
+    </div> 
+    <div class="botbtn" id="btn"  @click="submitmark"><a href="javascript:;">保存</a></div>
+</div> 
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script src="src/js/lib/jquery.cookie.min.js"></script>
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/message.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    
+    $("html").css("font-size",sw/1080*32.8125+"px");
+    function connectWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) {
+        callback(WebViewJavascriptBridge);
+    } else {
+        document.addEventListener('WebViewJavascriptBridgeReady', function() {
+            callback(WebViewJavascriptBridge);
+        }, false);
+    }
+}
+connectWebViewJavascriptBridge(function(bridge) {
+    // 初始化
+    bridge.init(function(message, responseCallback) {
+        var data = {
+            'Javascript Responds': 'backBefore'
+        };
+        responseCallback(data);
+    });
+    // oc调用js方法
+    bridge.registerHandler('zkBackEvent',function(data, responseCallback) {
+        history.back();
+        var responseData = 'success';
+        responseCallback(responseData);
+    }); 
+    bridge.registerHandler('readyBack',function(data, responseCallback) {
+        readyBack();
+        var responseData = {
+            'Javascript Says': 'readBack!'
+        };
+        responseCallback(responseData);
+    });    
+
+});
+function callPhone(data){
+        if (!window.WebViewJavascriptBridge) {
+            return false;
+        }
+        window.WebViewJavascriptBridge.callHandler('callPhone', data,
+            function(responseData) {
+                deviceData = responseData;
+            });
+            return deviceData;
+}  
+    $('.miaoshu').on('keyup change click focus',function(){
+        var l = $('.miaoshu').val().length;
+        if(l>18){
+            $('.sere').css('color','red');
+            $('.ies').text(l);  
+        }else{
+            $('.sere').css('color','#ccc');
+            $('.ies').text(l);            
+        }
+    })
+</script>
+</html>

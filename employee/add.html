@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>添加客户</title>
+</head>
+<style>
+    html,body{padding: 0;margin: 0;font-family: "微软雅黑",'arial';height: 100%;background-color: #fff}
+    ul,li{margin: 0;padding: 0;list-style: none;color: #333;}
+    .list{overflow: hidden;}
+    [v-cloak] {
+      display: none;
+    }
+    .form{padding-top:1rem;width: 90%;margin: 0 auto;}
+    .form li{overflow: hidden;line-height: 2.8rem;margin-bottom: 0.8rem;color: #666;}
+    .form div{float: left;}
+    .point{width: 5%;}
+    .point i{width: 0.6rem;height: 0.6rem;background: #ffbc3a;border-radius: 50%;display: block;margin: 1.1rem auto 0 auto;}
+    .mid{width: 22%; font-size: 1.4rem;}
+    .ixle{width: 100%;border: 1px solid #ccc;outline: none;box-sizing: border-box;height: 2.6rem;padding-left: 5px;border-radius: 3px;font-size: 1.4rem;}
+    .inputse{width: 73%;}
+    .form li textarea{width: 100%;border: 1px solid #ccc;outline: none;box-sizing: border-box;padding: 5px;border-radius: 3px;font-size: 1.4rem;}
+    .submit{width: 100%;position: fixed;bottom: 0;left: 0;height: 4rem;}
+    .submit a{line-height: 4rem;text-align: center;color: white;text-decoration: none;display: block;width: 100%;background: #3fc371;font-size: 1.6rem;}
+    
+     .seree{position: fixed;top: 50%;margin-top: -80px;height: 160px;
+    text-align: center;width: 80%;margin-left: -40%;left: 50%; background: white;
+        z-index: 2;border-radius: 5px;box-shadow: 0px 10px 48px 0px #000;display: none;
+    }
+     .tilt{text-align: center;font-size: 18px;line-height: 42px;}
+    .title_text{line-height: 60px;}
+     .beun{text-align: center;line-height: 42px;height: 42px; font-size: 18px;position: relative;
+    bottom: -15px;
+    border-top: 1px solid #eee;}
+</style>
+<body>
+<div class="list" id="once" v-cloak>
+   <ul class="form">
+       <li><div class="point"><i></i></div><div class="mid">客户姓名</div><div class="inputse"><input v-model="name" placeholder="请输入客户姓名" class="ixle" type="text"></div></li>
+       <li><div class="point"><i></i></div><div class="mid">客户性别</div><div class="inputse"><select v-model="sex" class="ixle"><option value="M">男</option><option value="F">女</option></select></div></li>
+       <li><div class="point"><i></i></div><div class="mid">联系电话</div><div class="inputse"><input  v-model="phone" placeholder="请输入联系电话" class="ixle" type="text"></div></li>
+  
+       <li><div class="point"><i style="opacity:0"></i></div><div class="mid">客户级别</div><div class="inputse"><select v-model="elevl" class="ixle"><option value="1">一级客户</option><option value="2">二级客户</option><option value="3">三级客户</option></select></div></li>
+       <li><div class="point"><i style="opacity:0"></i></div><div class="mid">来访状态</div><div class="inputse"><select v-model="type" class="ixle"><option value="1">电话来访</option><option value="2">到店来访</option></select></div></li>
+       <li><div class="point"><i style="opacity:0"></i></div><div class="mid">特别备注</div><div class="inputse"><textarea v-model="mark" placeholder="请输入备注" name="beizhu" id="" cols="40" rows="4"></textarea></div></li>
+   </ul>
+   <div class="submit"><a href="javascript:;" @click="addSubmit">提交</a></div>
+</div>
+<!--<div id="nullsd" style="text-align:center;font-size:1.2rem;line-height:100vh;background:#fff;color: #666;display:none;">数据加载中...</div>-->
+<div class="seree">
+     <div class="tilt">提   示</div>
+     <div class="title_text">--</div>
+     <div class="beun" onclick="cencle()">确定</div>
+</div> 
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/add.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+    function alerts(val){
+        $('.seree').fadeIn(200);
+        $('.title_text').text(val)
+    }
+    function cencle(val){
+        $('.seree').hide();
+    }
+</script>
+</html> 

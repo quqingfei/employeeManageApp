@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>员工通道 </title>
+    <link rel="stylesheet" href="src/css/index.css">
+    <link rel="stylesheet" href="src/css/sm.css">
+</head>
+<style>
+    .ds{width: 36%;}
+    .zyphone{overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;}
+    .sed{width: 59%;}
+    body{width: 100%;height: 100%;font-family: "微软雅黑"}
+    .uplink{width: 100%;height: 100%;position: relative;left: 100%;display: none;}
+    .uplinklist{line-height: 3.6rem;font-size: 1.4rem; color: #666;width: 90%;margin:0 5%;border-bottom: 1px solid #ccc;box-sizing: border-box;}
+    .uplinkgray{color: #888;}
+    .ixle{line-height: 2.8rem;border: none;background: white;width: 64%;color: #888; font-size: 1.4rem;font-family: "微软雅黑"}
+    .edits{float: right;width: 10%;height: 3.6rem;background: url('src/img/edits.png') no-repeat center center;background-size: 70%;}
+    .del{float: right;width: 10%;height: 3.6rem;background: url('src/img/del.png') no-repeat center center;background-size: 70%;}
+    .lastremake{overflow: hidden;width: 90%;margin: 0 auto;color: #666;}
+    .laet{float: left;line-height: 3.6rem;font-size: 1.4rem;}
+    .lastremake textarea{width: 62%;padding: 5px;margin-top: 0.3rem;font-size: 1.4rem;border: none;background: white;color: #888;font-family: "微软雅黑"}
+     @media (min-width: 320px){
+         .lastremake textarea{margin-top: 0.6rem;}
+    }
+    @media (min-width: 375px) and (max-width:414px){
+        .lastremake textarea{margin-top: 0.5rem;}
+    }
+    @media (min-width: 414px){
+        .lastremake textarea{margin-top: 0.4rem;}
+    }
+    .submit{width: 100%;position: fixed;bottom: 0;left: 0;height: 4rem;}
+    .submit a{line-height: 4rem;text-align: center;color: white;text-decoration: none;display: block;width: 50%;font-size: 1.6rem;float: left;}
+</style>
+<body id="mysource" onselectstart="return false">
+       <div class="eed" id="dioelist">
+           <!--<div class="pinl pa-l-0 bgleft" onclick="openl()">
+            <div class="zylist"><div class="zyna ds doublack">小猪</div><div class="zytype"></div><div class="zyphone sed">联系时间：<span>13425257758</span></div></div>
+            <div class="zylist"><div class="zyna ds">有效记录：<span>男</span></div><div  class="zyphone sed">联系备注：<span class="nidi">可能是一段很长的话啊啊啊啊啊</span></div></div>
+        </div>-->
+            <div class="pinl pa-l-0 bgleft" @click="sub(todo)" v-for="todo in todos" delid="{{todo.id}}">
+                <div class="zylist"><div class="zyna ds doublack" v-text="todo.name">-</div><div class="zytype"></div><div class="zyphone sed">提醒时间：<span v-text="todo.invitationDate | time">-</span></div></div>
+                <div class="zylist"><div class="zyna ds" >会籍：<span v-text="todo.saleName">-</span></div><div  class="zyphone sed">提醒备注：<span class="nidi" v-text="todo.remark">-</span></div></div>
+            </div>
+       </div>
+        
+<!--    <div id="morelist">
+        <div @click="listsert" class="diy top disa">上一页</div>
+        <div class="top" >第<span v-text="is"></span>页</div>
+     <div class="top" v-else>最后一页</div>
+        <div @click="listcort" class="dys top disa">下一页</div>
+    </div>-->
+<div class="uplink">
+    <div class="uplinklist">客户姓名：<span class="uplinkgray" v-text="saleName">德玛</span><div class="del"></div></div>
+    <div class="uplinklist">提醒时间：<input class="ixle" type="text" id='datetime-picker' /><div class="edits"></div></div>
+    <div class="lastremake"><div class="laet">提醒备注：</div><textarea v-model="remark" name="" id="ss" cols="30" rows="4">-</textarea><div class="edits"></div></div>
+    <div class="submit"><a style="background: #ccc;" @click="dellink(id)" href="javascript:;">删除</a><a style="background: #3fc371;" @click="update(id)" href="javascript:;">提交</a></div>
+</div>
+<div id="mynulled" style="text-align: center; font-size: 1.2rem; line-height: 80px; color: rgb(102, 102, 102);">没有更多数据了</div>
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script type='text/javascript' src='src/js/lib/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='src/js/lib/vue.js' charset='utf-8'></script>
+<script type='text/javascript' src='src/js/linkinvite.js' charset='utf-8'></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+    $('.bbody').fadeIn(200);
+    
+    Vue.filter('time', function (value) {
+        var date = new Date(value);
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        var daed = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var months = month>=10?month:'0'+month;
+        var daeda =  daed>=10?daed:'0'+daed;
+        var hours =  hour>=10?hour:'0'+hour;
+        var minutes =  minute>=10?minute:'0'+minute;
+        return year+'/'+months+'/'+daeda+" "+hours+':'+minutes;
+    })
+    
+   /* var date = new Date();
+    var month = date.getMonth()+1;
+    var daed = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var montha = month>=10?month:'0'+month;
+    var daeda =  daed>=10?daed:'0'+daed;
+    var hours =  hour>=10?hour:'0'+hour;
+    var minutes =  minute>=10?minute:'0'+minute;
+     $("#datetime-picker").datetimePicker({
+      value: [date.getFullYear(),montha ,daed , hours, minutes],
+      maxDate: date.getFullYear()+':'+montha+':'+daed
+    });*/
+/*    function openl(){
+        $('.eed').hide();
+        $('.uplink').show();
+        $('.uplink').animate({'left':0},100);
+    }*/
+    $('.del').click(function(){
+        $('.uplink').animate({'left':'100px'},100,function(){
+            $('.uplink').hide();
+            $('.eed').show();
+        });
+        
+    })
+    function getCookie(c_name){
+        if (document.cookie.length>0){ 
+            c_start=document.cookie.indexOf(c_name + "=")
+            if (c_start!=-1){ 
+                c_start=c_start + c_name.length+1 
+                c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+                return unescape(document.cookie.substring(c_start,c_end))
+            } 
+        }
+        return ""
+    }
+</script>
+
+</html>

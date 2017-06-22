@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>业绩详情</title>
+    <link rel="stylesheet" href="src/css/source.css">
+</head>
+
+<body id="shource">
+    <div class="ygt">
+        <div class="ygt1 item" data-title="a"><a class="c1 item1" href="javascript:;">开卡</a></div>
+        <div class="ygt1" data-title="b"><a class="c2" href="javascript:;">课程</a><i></i></div>
+        <div class="ygt1" data-title="c"><a class="c3" href="javascript:;">其他</a></div>
+    </div>
+    <div class="gary-line_5"></div>
+    <div class="ygt-list csoer1">
+        <ul>
+           <li v-for="opcard in opcards"><a href="javascript:;">
+               <div class="psert30" v-text="opcard.createDate">0000-00-00</div>
+               <div class="psert30" v-text="opcard.salerName">---</div>
+               <div class="psert20" v-text="opcard.Name">---</div>
+               <div class="psert20 green">￥<span v-text="opcard.realPay">-</span></div>
+           </a></li>
+           <div id="nulls1" style="text-align: center; font-size: 1.2rem; line-height: 80px; color: rgb(102, 102, 102); display: block;">没有数据</div>
+        </ul>
+    </div>
+    <div class="ygt-list csoer2">
+        <ul>
+           <li v-for="source in sources"><a href="javascript:;">
+               <div class="ser" v-text="source.createDate">0000-00-00</div>
+               <div class="ser" v-text="source.Name">---</div>
+               <div class="ser green">￥<span v-text="source.realPay">-</span></div>
+           </a></li>
+           <div id="nulls2" style="text-align: center; font-size: 1.2rem; line-height: 80px; color: rgb(102, 102, 102); display: block;">没有数据</div>
+        </ul>
+    </div>
+    <div class="ygt-list csoer3">
+        <ul>
+           <li v-for="other in others"><a href="javascript:;">
+               <div class="ser" v-text="other.createDate">0000-00-00</div>
+               <div class="ser" v-text="other.Name">---</div>
+               <div class="ser green">￥<span v-text="other.realPay">-</span></div>
+           </a></li>
+           <div id="nulls3" style="text-align: center; font-size: 1.2rem; line-height: 80px; color: rgb(102, 102, 102); display: block;">没有数据</div>
+        </ul>
+    </div>
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script src="src/js/lib/vue.js"></script>
+<script src="src/js/source.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+    $('.ygt .ygt1').click(function(){
+        $('.ygt1').removeClass('item');
+        $(this).addClass('item');
+        $('.csoer1,.csoer2,.csoer3').hide();
+        switch($(this).attr('data-title')){
+            case 'a': $('.csoer1').fadeIn(200); break;
+            case 'b': $('.csoer2').fadeIn(200); break;
+            case 'c': $('.csoer3').fadeIn(200); break;
+        }
+    })
+</script>
+</html>

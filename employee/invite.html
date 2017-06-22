@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="src/css/sm.css">
+    <title>邀约到访</title>
+</head>
+<style>
+    html,body{padding: 0;margin: 0;font-family: "微软雅黑",'arial';height: 100%;background-color: #fff}
+    ul,li{margin: 0;padding: 0;list-style: none;color: #333;}
+    .list{overflow: hidden;}
+ /*   [v-cloak] {
+      display: none;
+    }*/
+    .formd{padding-top:1rem;width: 90%;margin: 0 auto;}
+    .formd li{overflow: hidden;line-height: 2.8rem;margin-bottom: 0.8rem;color: #666;}
+    .formd div{float: left;}
+    .point{width: 5%;}
+    .point i{width: 0.6rem;height: 0.6rem;background: #ffbc3a;border-radius: 50%;display: block;margin: 1.1rem auto 0 auto;}
+    .mid{width: 22%; font-size: 1.4rem;}
+    .ixle{width: 100%;border: 1px solid #ccc;outline: none;box-sizing: border-box;height: 2.6rem;padding-left: 5px;border-radius: 3px;font-size: 1.4rem;}
+    .inputse{width: 73%;}
+    .formd li textarea{width: 100%;border: 1px solid #ccc;outline: none;box-sizing: border-box;padding: 5px;border-radius: 3px;font-size: 1.4rem;}
+    .submit{width: 100%;position: fixed;bottom: 0;left: 0;height: 4rem;}
+    .submit a{line-height: 4rem;text-align: center;color: white;text-decoration: none;display: block;width: 100%;background: #3fc371;font-size: 1.6rem;}
+    .liake{background: white;height: 4rem;overflow: hidden;width: 92%;padding: 0 4%;}
+    .lisnet{overflow: hidden;width: 100%;margin-top: 0.6rem;border: 1px solid #3fc371;border-radius: 4px;}
+    .lisn{float: left;text-align: center;width: 50%;line-height: 2.8rem;color: #3fc371;font-size: 1.4rem;}
+    .item{background: #3fc371;color: white;}
+</style>
+<body>
+<div class="list" id="once" v-cloak>
+  <div class="formd" id="remind">
+       <ul>
+           <li><div class="point"><i style="opacity:0"></i></div><div class="mid">客户姓名</div><div class="inputse"><input style="color:#060606" disabled="disable" id="inname" class="ixle" type="text"></div></li>
+           <li><div class="point"><i></i></div><div class="mid">邀约时间</div><div class="inputse"><input class="ixle" type="text"  placeholder="" id='datetime-picker' /></div></li>
+           <li><div class="point"><i></i></div><div class="mid">特别备注</div><div class="inputse"><textarea id="remake" placeholder="请输入备注" name="beizhu" id="" cols="40" rows="4"></textarea></div></li>
+       </ul>
+  </div>
+   <div class="submit" onclick="formsubmit()"><a href="javascript:;">提交</a></div>
+</div>
+<!--<div id="nullsd" style="text-align:center;font-size:1.2rem;line-height:100vh;background:#fff;color: #666;display:none;">数据加载中...</div>-->
+</body>
+<script src="src/js/lib/jquery-1.8.3.min.js"></script>
+<script type='text/javascript' src='src/js/lib/sm.js' charset='utf-8'></script>
+<!--<script type='text/javascript' src='http://m.sui.taobao.org/dist/js/sm-extend.js' charset='utf-8'></script>-->
+<!--<script src='http://m.sui.taobao.org/docs-demos/js/picker.js'></script>-->
+<!--<script src="src/js/lib/vue.js"></script>
+<script src="src/js/add.js"></script>-->
+<script>
+     function geturl(url){
+         return "http://"+window.location.host+'/fatburn/employee/detial.html?id='+url;
+    }
+    var sw = $(window).width();
+        if(sw>414){
+        sw = 414;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+    var date = new Date();
+    var month = date.getMonth()+1;
+    var daed = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var montha = month>=10?month:'0'+month;
+    var daeda =  daed>=10?daed:'0'+daed;
+    var hours =  hour>=10?hour:'0'+hour;
+    var minutes =  minute>=10?minute:'0'+minute;
+    $("#datetime-picker").datetimePicker({
+      value: [date.getFullYear(),montha ,daeda , hours, minutes],
+      maxDate: date.getFullYear()+':'+montha+':'+daeda
+    });
+    $('.lisnet .lisn').click(function(){
+        var d = $(this).attr('val');
+        $('.lisnet .lisn').removeClass('item');
+        $(this).addClass('item');
+        if(d==1){
+            $('#record').show();
+            $('#remind').hide();   
+        }
+        if(d==2){
+            $('#remind').show();
+            $('#record').hide();
+        }
+    });
+    function getCookie(c_name){
+        if (document.cookie.length>0){ 
+            c_start=document.cookie.indexOf(c_name + "=")
+            if (c_start!=-1){ 
+                c_start=c_start + c_name.length+1 
+                c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+                return unescape(document.cookie.substring(c_start,c_end))
+            } 
+        }
+        return ""
+    };
+    $('#inname').val(getCookie('username'));
+    function formsubmit(){
+            var dof = $('#datetime-picker').val()+":00";
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth()+1;
+            var daed = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var months = month>=10?month:'0'+month;
+            var daeda =  daed>=10?daed:'0'+daed;
+            var hours =  hour>=10?hour:'0'+hour;
+            var minutes =  minute>=10?minute:'0'+minute;
+            var dn = year+'/'+months+'/'+daeda+" "+hours+':'+'00:00';
+            var ss = new Date(dn).getTime();
+            var dd = new Date(dof).getTime();
+            if(dd-ss<=0){
+                alert('选择的时间必须大于当前时间！');
+                return false;
+            }
+            if($('#remake').val()==""){
+                alert('备注不能为空！');
+                return false;
+            }
+        var data = {
+            customerId:getCookie('custormId'),
+            record:$('#remake').val(),
+            date:$('#datetime-picker').val()+":00"
+        }
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            data:data,
+            url:'../employees/GymCustomerRecordAction!addAppointment.zk',
+            success: function(data){
+               if(data.STATUS){
+                   alert('添加成功');
+                   history.go(-1);
+               }else{
+                   alert('该员工不是会籍！无法添加');
+               }
+            }
+        })
+    }
+    
+</script>
+</html> 
